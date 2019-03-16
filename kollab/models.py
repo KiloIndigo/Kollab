@@ -1,6 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+
+
+##so I want to be able to return info for chat - unique ID, user name, photoURL 
+
+#userInfo = UserProfile.objects.get()
+
+
+
+
+    
 
 '''
 kollab/models.py
@@ -72,6 +84,23 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+#Attempting to create a model to connect two users
+#I want the name of chat to be name of collaborator
+#No idea if this is done correctly :) 
+class MatchUsers(models.Model):
+    user = models.ForeignKey(UserProfile, related_name="collaborator1", on_delete=models.CASCADE)
+    collaborator = models.ForeignKey(UserProfile, related_name="collaborator2", on_delete=models.CASCADE)
+    name =(UserProfile.firstname)
+    match = models.BooleanField
+    
+    slug = models.SlugField(blank=True, null=True)
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(MatchUsers, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name
+    
 
 class Project(models.Model):
     name = models.CharField(max_length=128)

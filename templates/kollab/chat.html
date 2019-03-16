@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
-
 <head>
     <meta charset="utf-8">
-    <title>Kollab - Projects</title>
+    <title>Kollab - Chat</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style type="text/css">
@@ -562,7 +560,7 @@ background-size: cover;
       <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-            <link rel="icon" type="image/png" href="favicon.ico">
+          <link rel="icon" type="image/png" href="favicon.ico">
 
 
 </head>
@@ -615,35 +613,76 @@ background-size: cover;
 
         <ul>
           <li class="header-menu">
-            <span>Your Projects</span>
+            <span>Your Collaborators</span>
           </li>
-          <li class="sidebar">
+          <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-clipboard-list"></i>
-              <span>Our New Band</span>
+              <i class="fa fa-user"></i>
+              <span>Bill Williamson</span>
               <span class="badge badge-pill badge-warning">New</span>
             </a>
-
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">View Profile
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Chat</a>
+                </li>
+              </ul>
+            </div>
           </li>
-          <li class="sidebar">
+          <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-clipboard-list"></i>
-              <span>Let's Start a Ska...</span>
-                      <span class="badge badge-pill badge-success notification">2</span>
+              <i class="fa fa-user"></i>
+              <span>Jim Marston</span>
+                      <span class="badge badge-pill badge-success notification">5</span>
             </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">View Profile
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Chat</a>
+                </li>
+              </ul>
+            </div>
           </li>
-          <li class="sidebar">
+          <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-clipboard-list"></i>
-              <span>Singer Wanted for...</span>
-              <span class="badge badge-pill badge-success notification">1</span>
+              <i class="fa fa-user"></i>
+              <span>Sadie Adler</span>
+              <span class="badge badge-pill badge-success notification">2</span>
             </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">View Profile</a>
+                </li>
+                <li>
+                  <a href="#">Chat</a>
+                </li>
+              </ul>
+            </div>
           </li>
-          <li class="sidebar">
+          <li class="sidebar-dropdown">
             <a href="#">
-              <i class="fa fa-clipboard-list"></i>
-              <span>Let's Make Music For...</span>
+              <i class="fa fa-user"></i>
+              <span>Molly O'Shea</span>
             </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">View Profile</a>
+                </li>
+                <li>
+                  <a href="#">Chat</a>
+                </li>
+              </ul>
+            </div>
           </li>
               </ul>
       </div>
@@ -665,95 +704,30 @@ background-size: cover;
         <i class="fa fa-clipboard-list"></i>
         <span class="badge badge-pill badge-success notification">3</span>
       </a>
-      <a href="#">
+      <a href="editprofile.html">
         <i class="fa fa-cog"></i>
-      </a>
     </div>
   </nav>
   <!-- page content  -->
   <main class="page-content">
     <div class="container-fluid">
 
-
-        <!-- Horizontal Menu  -->
-
       <div class = "row"></div>
 <nav class="navbar navbar-dark bg-dark">
-  <a class="text-light"><h2>{{ name }}</h2></a>
-    <a class="btn btn-primary" href="#" role="button">Edit Project</a>
+  <a class="text-light"><h2>Chat</h2></a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+  </form>
 </nav>
-<nav class="navbar navbar-dark bg-dark">
-  <a class="text-light"><h6>{{ short }}</h6></a>
-</nav>
     </div>
 
-<div class="container">
- <div class = "jumbotron">
-	<div class = "row">
-	<div class="col-sm-6">
-	<img class="card-img-top" src="{% get_media_prefix %}{{ picture }}" alt="">
-	</div>
-	<div class="col-sm-6">
-	{{ long }}
-	</div>
-	</div>
-	</div>
- </div>
-  
- 
-  
-  <div class="row">
-    <div class="col-sm">
-      <b>Current Members:</b>
-		{% for member in members.all %}
-		 <h6>
-            <a href="{% url 'profile' user_name_slug=member.slug %}">{{member}}</a>
-         </h6>
-		{% endfor %}
-
-    </div>
-    <div class="col-sm">
-<div class="btn-group-vertical">
-<input class="btn btn-primary" type="button" value="Add Collaborator">
-<input class="btn btn-primary" type="button" value="Remove Collaborator">
-
-</div>
-    </div>
-
-       <div class="col-sm">
-
-    </div>
-
-    <div class="col-sm">
-
-      <b>Project Tags:</b>
-	  <h6>
-	   {% for tag in tags %}         
-           <a href="{% url 'embedded_search' tag_slug=tag search_type='project' %}">{{ tag }}</a>,
-        {% endfor %}
-       </h6>
-    </div>
-
-       <div class="col-sm">
-
-    </div>
-
-</div>
-
-       <!-- Chat -->
-
-      <div class="container">
 
 
+  </div>
+  <!-- /.row -->
 
-
-
-</div>
-
-
-
-
-</div>
+  <!-- Pagination -->
 
   </main>
   <!-- page-content" -->
@@ -766,12 +740,8 @@ background-size: cover;
         crossorigin="anonymous"></script>
     
 </body>
-
-
-<script type="text/javascript">
-
 <!-- minified snippet to load TalkJS without delaying your page -->
-
+<script>
 (function(t,a,l,k,j,s){
 s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
 ;k=t.Promise;t.Talk={v:1,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
@@ -781,37 +751,41 @@ s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.h
 <!-- container element in which TalkJS will display a chat UI -->
 <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>
 
-<!-- TalkJS initialization code, which we'll customize in the next steps -->
-<script>
+
+
+
+<script type="text/javascript">
 Talk.ready.then(function() {
+
+
+	
     var me = new Talk.User({
         id: "123456",
         name: "Alice",
         email: "alice@example.com",
         photoUrl: "https://demo.talkjs.com/img/alice.jpg",
-       
+        welcomeMessage: "Hey there! How are you? :-)"
     });
     window.talkSession = new Talk.Session({
         appId: "t2rQkf74",
         me: me
     });
-    var other = new Talk.User({
+   var other = new Talk.User({
         id: "654321",
         name: "John Smith",
         email: "Sebastian@example.com",
+		
         photoUrl: "https://demo.talkjs.com/img/sebastian.jpg",
-        
+        welcomeMessage: "Hey, how can I help?"
     });
 
     var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other))
     conversation.setParticipant(me);
     conversation.setParticipant(other);
-    var chatbox = talkSession.createChatbox(conversation);
-chatbox.mount(document.getElementById("talkjs-container"));
+   var chatbox = talkSession.createChatbox(conversation);
+	chatbox.mount(document.getElementById("talkjs-container"));
 
 });
-
-
 jQuery(function ($) {
 
     $(".sidebar-dropdown > a").click(function() {
@@ -849,4 +823,5 @@ $("#show-sidebar").click(function() {
 });
 </script>
 </html>
-
+</body>
+</html>

@@ -8,6 +8,9 @@ urlpatterns = [
     
     url(r'^profile/(?P<user_name_slug>[\w\-]+)/$', views.profile, name='profile'),
     url(r'^project/(?P<project_name_slug>[\w\-]+)/$', views.project, name='project'),
+    url(r'^chat/', views.chat, name='chat'),
+    #url(r'^chat/(?P<matchusers_name_slug>[\w\-]+)/$', views.chat, name='chat'),
+    
     url(r'^firststep/$', views.login_register, name='login_register'),
     url(r'^login/$', views.login_page, name='login_page'),
     url(r'^login/authenticate/$', views.login_authenticate, name='login_authenticate'),
